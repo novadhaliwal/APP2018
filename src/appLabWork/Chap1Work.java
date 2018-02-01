@@ -56,9 +56,9 @@ public class Chap1Work {
 	public static boolean isLightApple(Apple apple) {
 		return apple.getWeight()<=80;
 	}
-}
+
 	
-	 class Apple {
+	 public static class Apple {
 		
 		public int weight;
 		public String color="";
@@ -104,3 +104,4 @@ public class Chap1Work {
 		
 	}
 
+}

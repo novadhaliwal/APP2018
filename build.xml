@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="appLabWork" default="main" basedir=".">
+<property name="projectName" value="PrintDateAnt">
+</property>
+<property name="src.dir" location="src"></property>
+<property name="build.dir" location="bin" ></property>
+<property name="dist.dir" location="dist" ></property>
+
+<target name="init">
+<tstamp></tstamp>
+<mkdir dir="${build.dir}"></mkdir></target>
+
+<target name="compile" depends="init" description="compile the source">
+<javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}"/></target>
+
+<target name="dist" depends="compile" description="package, output to JAR">
+<mkdir dir="${dist.dir}"/>
+<jar jarfile="${dist.dir}/${projectName}-${DSTAMP}.jar" basedir="${build.dir}">
+<manifest>
+<attribute name="Main-Class" value="/appLabWork/src/appLabWork/PrintDateAnt"/>
+</manifest></jar></target>
+
+<target name="clean" description="clean up">
+<delete dir="${build.dir}"/>
+<delete dir="${dist.dir}"/>
+</target>
+<target name="main" depends="clean, compile, dist"></target>
+</project>
