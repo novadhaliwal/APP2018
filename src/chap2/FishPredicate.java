@@ -2,6 +2,7 @@ package chap2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -14,6 +15,19 @@ public class FishPredicate {
 				new Fish("Sardine", "black", 100), new Fish("Stingray", "black", 500),
 				new Fish("Dogfish", "white", 400), new Fish("Whale", "white", 1000),
 				new Fish("Dolphin", "white", 500));
+		
+		Comparator<Fish> c= (Fish f1, Fish f2)-> f1.getLen().compareTo(f2.getLen());
+		
+		//Comparator<Fish> c=(Fish f1, Fish f2)-> f1.getName().compareTo(f2.getName());
+		inventory.sort(c);
+		System.out.println("sorted inventory--");
+		for(Fish f:inventory) {
+			
+		System.out.println(f.getName()+" ");
+		System.out.println(f.getLen());
+		
+		}
+		
 		// u can use predicate two ways: first method
 		
 		List<Fish> whiteFish= filterfish(inventory, (Fish fish)->fish.color.equals("white"));
@@ -109,7 +123,7 @@ public class FishPredicate {
 			this.color = color;
 		}
 
-		public int getLen() {
+		public Integer getLen() {
 			return len;
 		}
 
