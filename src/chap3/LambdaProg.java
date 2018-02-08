@@ -1,4 +1,4 @@
-package chap2;
+package chap3;
 
 public class LambdaProg {
 		
