@@ -1,4 +1,4 @@
-package appLabWork;
+package chap1;
 
 import java.util.Date;
 

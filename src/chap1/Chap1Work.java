@@ -1,20 +1,18 @@
-package appLabWork;
+package chap1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
-import org.apache.log4j.Logger;
-import org.apache.log4j.BasicConfigurator;
-
-
+//import org.apache.log4j.Logger;
+//import org.apache.log4j.BasicConfigurator;
 
 public class Chap1Work {
 	
-	static Logger logger = Logger.getLogger(Chap1Work.class);
+	//static Logger logger = Logger.getLogger(Chap1Work.class);
 	public static void main(String[] args) {
-		BasicConfigurator.configure();
-        logger.info("Hello World");
+	//	BasicConfigurator.configure();
+      //  logger.info("Hello World");
         
 		List<Apple> inventory= Arrays.asList(new Apple(80,"green"),
 						new Apple(150, "red"), new Apple(120, "green"), new Apple(155, "red"),
