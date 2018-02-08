@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="appLabWork" default="main" basedir=".">
-<property name="projectName" value="PrintDateAnt">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="appLabWork" default="resolve" basedir=".">
+<path id="classpath">
+        <fileset dir="lib" includes="**/*.jar"/>
+    </path>
+<property name="projectName" value="Chap1WorkTest">
 </property>
 <property name="src.dir" location="src"></property>
 <property name="build.dir" location="bin" ></property>
@@ -11,18 +14,28 @@
 <mkdir dir="${build.dir}"></mkdir></target>
 
 <target name="compile" depends="init" description="compile the source">
-<javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}"/></target>
+<javac classpathref="classpath" includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}"/></target>
 
 <target name="dist" depends="compile" description="package, output to JAR">
 <mkdir dir="${dist.dir}"/>
 <jar jarfile="${dist.dir}/${projectName}-${DSTAMP}.jar" basedir="${build.dir}">
+<fileset dir="bin" includes="*/.class" />
+    <zipgroupfileset dir="lib" includes="*/.jar" />
+	<!-- <zipgroupfileset dir="lib" includes=".jar" excludes="META-INF/.SF, META-INF/.DSA, META-INF/.RSA" />-->
 <manifest>
-<attribute name="Main-Class" value="/appLabWork/src/appLabWork/PrintDateAnt"/>
+<attribute name="Main-Class" value="appLabWork.Chap1Work"/>
 </manifest></jar></target>
 
+<target name="resolve" description="---->> retrive dependencies with ivy">
+
+<ivy:retrieve/></target>
+
+<target name="run" depends="dist">
+        <java  jar="${dist.dir}/${projectName}-${DSTAMP}.jar" fork="true"/>
+           </target>
 <target name="clean" description="clean up">
 <delete dir="${build.dir}"/>
 <delete dir="${dist.dir}"/>
 </target>
-<target name="main" depends="clean, compile, dist"></target>
+<target name="main" depends="clean, compile, dist, run"></target>
 </project>
